@@ -1,0 +1,53 @@
+name: Deploy Tailwind HTML to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # برای تست دستی
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci   # یا npm install اگر ci مشکل داشت
+
+      - name: Build Tailwind CSS
+        run: npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify
+        # اگر مسیر input.css فرق داره (مثلاً src/styles/input.css)، اینجا عوض کن
+
+      - name: Copy index.html and images to dist (if needed)
+        run: |
+          mkdir -p dist
+          cp index.html dist/ || true
+          cp -r images dist/ || true   # اگر images توی root هست
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist   # خروجی نهایی از dist deploy می‌شه
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
