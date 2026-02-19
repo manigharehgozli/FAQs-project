@@ -2,7 +2,6 @@ const titles = document.querySelectorAll(".section-title");
 const descriptions = document.querySelectorAll(".section-description");
 const icons = document.querySelectorAll(".button-icon");
 
-
 function changeImageBasedOnScreen() {
   const imageElement = document.querySelector(`.background-image`);
   const windowWidth = window.innerWidth;
@@ -18,8 +17,6 @@ function changeImageBasedOnScreen() {
 
 window.addEventListener(`load`, changeImageBasedOnScreen);
 window.addEventListener(`resize`, changeImageBasedOnScreen);
-
-
 
 titles.forEach((title, i) => {
   title.addEventListener("click", () => toggleItem(i));
