@@ -6,10 +6,6 @@ This is my very **first project using Tailwind CSS**, and it was an exciting jou
 
 ### Live Demo
 - [View Live on Netlify](https://faqs-project-pro.netlify.app)
-- (یا اگر هنوز GitHub Pages داری: https://manigharehgozli.github.io/FAQs-project/)
-
-### Screenshots
-(اختیاری: می‌تونی ۲-۳ عکس از موبایل و دسکتاپ بذاری و آپلود کنی توی ریپو یا imgur و لینک بدی)
 
 ### Features
 - Smooth expand/collapse animation using JavaScript and CSS transitions
@@ -42,6 +38,3 @@ This project helped me go from "I know some JS and CSS" to "I can build interact
 - Tailwind CSS v3 (utility-first CSS framework)
 - Vanilla JavaScript (no frameworks/libraries)
 - Deployed on Netlify (with auto-build on push)
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/manigharehgozli/FAQs-project.git
